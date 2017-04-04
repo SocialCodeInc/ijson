@@ -1,10 +1,11 @@
 from importlib import import_module
 
 from setuptools import setup, find_packages
+import subprocess
 
 setup(
     name = 'ijson',
-    version = import_module('ijson').__version__,
+    version=subprocess.check_output("git describe --tags --match '[0-9]*.[0-9]*'", shell=True).strip(),
     author = 'Ivan Sagalaev',
     author_email = 'maniac@softwaremaniacs.org',
     url = 'https://github.com/isagalaev/ijson',

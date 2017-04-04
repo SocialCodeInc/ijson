@@ -152,10 +152,11 @@ def items(prefixed_events, prefix):
 
 def number(str_value):
     '''
-    Converts string with a numeric value into an int or a Decimal.
+    Converts string with a numeric value into an int or a float.
     Used in different backends for consistent number representation.
     '''
-    number = decimal.Decimal(str_value)
-    if not ('.' in str_value or 'e' in str_value or 'E' in str_value):
-        number = int(number)
-    return number
+    try:
+        number = int(str_value)
+    except ValueError:
+        number = float(str_value)
+    return number    
